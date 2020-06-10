@@ -2,4 +2,4 @@
 
 KBench
 
-Simple Web Benchmark to test your servers 
+Simple Web Benchmark to test your servers based on Ktor CIO Client
