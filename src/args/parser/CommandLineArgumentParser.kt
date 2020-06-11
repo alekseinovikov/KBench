@@ -47,7 +47,7 @@ object CommandLineArgumentParser {
         ArgType.String,
         shortName = "d",
         fullName = "data",
-        description = "Request data"
+        description = "Request data file path"
     )
 
 
