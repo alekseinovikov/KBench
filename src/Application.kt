@@ -4,20 +4,16 @@ import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.request.get
 import io.ktor.client.statement.HttpResponse
-import kotlinx.cli.ArgParser
-import kotlinx.cli.ArgType
-import kotlinx.cli.required
+import io.ktor.util.KtorExperimentalAPI
 import kotlinx.coroutines.runBlocking
+import me.freedom4live.kbench.args.parser.CommandLineArgumentParser
 
+@KtorExperimentalAPI
 fun main(args: Array<String>): Unit = runBlocking {
-    val parser = ArgParser("kbench")
-
-    val url by parser.option(ArgType.String, shortName = "u", description = "URL for requests").required()
-
-    parser.parse(args)
+    val arguments = CommandLineArgumentParser.parse(args)
 
     val client = HttpClient(CIO)
-    val result = client.get<HttpResponse>(url)
+    val result = client.get<HttpResponse>(arguments.url)
 
     println(result.status)
 }
