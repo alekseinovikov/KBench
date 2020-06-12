@@ -1,6 +1,7 @@
 package me.freedom4live.kbench.args
 
 import me.freedom4live.kbench.data.FileDataLoader
+import me.freedom4live.kbench.request.RequestPortion
 
 enum class RequestType {
     GET,
@@ -16,6 +17,14 @@ data class Arguments(
     val dataFilePath: String? = null
 ) {
 
-    fun getData() = dataFilePath?.let { FileDataLoader.load(it) }
+    fun requestPortion() = RequestPortion(
+        url = url,
+        requestType = requestType,
+        requestCount = requestCount,
+        keepAlive = keepAlive,
+        data = getData()
+    )
+
+    private fun getData() = dataFilePath?.let { FileDataLoader.load(it) }
 
 }

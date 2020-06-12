@@ -2,6 +2,7 @@ val ktor_version: String by project
 val kotlin_version: String by project
 val logback_version: String by project
 val koltin_cli_version: String by project
+val coroutines_version: String by project
 val junit_version: String by project
 
 plugins {
@@ -26,6 +27,8 @@ repositories {
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version")
     implementation("io.ktor:ktor-client-cio:$ktor_version")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:$coroutines_version")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version")
 
     testImplementation("org.jetbrains.kotlin:kotlin-test:$kotlin_version")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5:$kotlin_version")
