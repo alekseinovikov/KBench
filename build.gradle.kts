@@ -2,10 +2,11 @@ val ktor_version: String by project
 val kotlin_version: String by project
 val logback_version: String by project
 val koltin_cli_version: String by project
+val junit_version: String by project
 
 plugins {
     application
-    kotlin("jvm") version "1.3.70"
+    kotlin("jvm") version "1.3.72"
 }
 
 group = "me.freedom4live.kbench"
@@ -28,13 +29,8 @@ dependencies {
 
     testImplementation("org.jetbrains.kotlin:kotlin-test:$kotlin_version")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5:$kotlin_version")
+    testImplementation("org.junit.jupiter:junit-jupiter:$junit_version")
 }
-
-kotlin.sourceSets["main"].kotlin.srcDirs("src")
-kotlin.sourceSets["test"].kotlin.srcDirs("test")
-
-sourceSets["main"].resources.srcDirs("resources")
-sourceSets["test"].resources.srcDirs("testresources")
 
 kotlin {
     sourceSets {
@@ -44,4 +40,8 @@ kotlin {
             }
         }
     }
+}
+
+tasks.withType<Test> {
+    useJUnitPlatform()
 }
