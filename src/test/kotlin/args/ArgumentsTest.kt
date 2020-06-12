@@ -18,7 +18,7 @@ internal class ArgumentsTest {
         val arguments = Arguments(url = myUrl)
 
         //act
-        val data = arguments.getData()
+        val data = arguments.requestPortion().data
 
         //assert
         assertNull(data)
@@ -35,7 +35,7 @@ internal class ArgumentsTest {
         )
 
         //act
-        assertThrows(FileNotFoundException::class.java) { arguments.getData() }
+        assertThrows(FileNotFoundException::class.java) { arguments.requestPortion().data }
     }
 
     @Test
@@ -52,7 +52,7 @@ internal class ArgumentsTest {
         )
 
         //act
-        val result = arguments.getData()
+        val result = arguments.requestPortion().data
 
         //assert
         assertTrue { expectedBytes.contentEquals(result!!) }
